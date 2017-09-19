@@ -9,7 +9,8 @@ namespace DeckTrackerCLI
 
         public DatabaseInterface(string database)
         {
-            _connection = new SqliteConnection($"Data Source={Environment.GetEnvironmentVariable(database)}");
+            string connectionString = $"Data Source={database}.db";
+            _connection = new SqliteConnection(connectionString);            
         }
 
         public void Query(string command, Action<SqliteDataReader> handler)
@@ -203,6 +204,7 @@ namespace DeckTrackerCLI
                     }
                 }
             }
+            _connection.Close();
         }
     }
 }

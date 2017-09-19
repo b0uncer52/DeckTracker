@@ -6,7 +6,9 @@ namespace DeckTrackerCLI
     {
         static void Main(string[] args)
         {
-            DatabaseInterface db = new DatabaseInterface("DECK_TRACKER_DB");
+            DatabaseInterface db = new DatabaseInterface("deck");
+
+            db.CheckTables();
         }
     }
 }
