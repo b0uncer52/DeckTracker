@@ -10,5 +10,12 @@ namespace DeckTrackerCLI
 
             db.CheckTables();
         }
+
+        public static void Warning(string warning)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(warning);
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
     }
 }
