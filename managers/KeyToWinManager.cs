@@ -40,7 +40,7 @@ namespace DeckTrackerCLI.Managers
                     {
                         _keys.Add(new KeyToWin(){
                             KeyId = reader.GetInt32(0),
-                            Name = reader[1].ToString(),
+                            Name = reader[1].ToString()
                         });
                     }
                 });

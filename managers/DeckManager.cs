@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DeckTrackerCLI.Models;
+using Microsoft.Data.Sqlite;
 
 namespace DeckTrackerCLI.Managers
 {
@@ -21,16 +22,21 @@ namespace DeckTrackerCLI.Managers
             return deck.DeckId;
         }
 
-        // accept a deckId and remove it from the database
-        public void DeleteDeck(int deckId) 
+        // accept formatid and return all decks in that format
+        public List<Deck> ListDecks(int formatId)
         {
-            _db.Delete($"DELETE FROM deck WHERE deckid == {deckId}");
-            _decks.Remove(_decks.Find(d => d.DeckId == deckId));
-        }
-
-        public List<Deck> ListDecks() // should accept format
-        {
-            return new List<Deck>();
+            _decks.Clear();
+            _db.Query($"SELECT * FROM deck WHERE formatid == {formatId}", (SqliteDataReader reader) => {
+                while(reader.Read())
+                {
+                    _decks.Add(new Deck(){
+                        DeckId = reader.GetInt32(0),
+                        Name = reader[1].ToString(),
+                        FormatId = reader.GetInt32(2)
+                    });
+                }
+            });
+            return _decks;
         }
     }
 }
