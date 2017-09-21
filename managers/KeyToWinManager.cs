@@ -7,7 +7,7 @@ namespace DeckTrackerCLI.Managers
     public class KeyToWinManager
     {
         private DatabaseInterface _db;
-        private List<KeyToWin> _keys;
+        private List<KeyToWin> _keys = new List<KeyToWin>();
 
         public KeyToWinManager(DatabaseInterface db)
         {

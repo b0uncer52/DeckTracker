@@ -7,7 +7,7 @@ namespace DeckTrackerCLI.Managers
     public class TeamManager 
     {
         private DatabaseInterface _db;
-        private List<Team> _teams;
+        private List<Team> _teams = new List<Team>();
         
         public TeamManager(DatabaseInterface db)
         {

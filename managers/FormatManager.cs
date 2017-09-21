@@ -7,7 +7,7 @@ namespace DeckTrackerCLI.Managers
     public class FormatManager
     {
         private DatabaseInterface _db;
-        private List<Format> _formats;
+        private List<Format> _formats = new List<Format>();
         
         public FormatManager(DatabaseInterface db)
         {

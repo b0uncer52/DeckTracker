@@ -47,7 +47,7 @@ namespace DeckTrackerCLI.Managers
         {
             _users.Remove(_users.Find(u => u.UserId == user.UserId));
             _users.Add(user);
-            _db.Update($"UPDATE user SET name = {user.Name}, password = {user.Password}, email = {user.Email} WHERE user.userid = {user.UserId}");
+            _db.Update($"UPDATE user SET name = '{user.Name}', password = '{user.Password}', email = '{user.Email}' WHERE user.userid = {user.UserId}");
         }
 
         // get a single user by userId
