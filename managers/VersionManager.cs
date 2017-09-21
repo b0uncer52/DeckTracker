@@ -51,11 +51,11 @@ namespace DeckTrackerCLI.Managers
             }
         }
 
-        // overloaded method receives a user and returns a list of all versions created by that user
-        public List<Version> ListVersions(User user)
+        // method receives a userid and returns a list of all versions created by that user
+        public List<Version> UserVersions(int userId)
         {
             _versions.Clear();
-            _db.Query($"SELECT * FROM version WHERE userid = {user.UserId}", (SqliteDataReader reader) => {
+            _db.Query($"SELECT * FROM version WHERE userid = {userId}", (SqliteDataReader reader) => {
                 while(reader.Read())
                 {
                     _versions.Add(new Version(){
@@ -71,11 +71,11 @@ namespace DeckTrackerCLI.Managers
             return _versions;
         }
 
-        // overloaded method receives a deck and returns all versions of that deck
-        public List<Version> ListVersions(Deck deck)
+        // method receives a deckid and returns all versions of that deck
+        public List<Version> DeckVersions(int deckId)
         {
             _versions.Clear();
-            _db.Query($"SELECT * FROM version WHERE deckid = {deck.DeckId}", (SqliteDataReader reader) => {
+            _db.Query($"SELECT * FROM version WHERE deckid = {deckId}", (SqliteDataReader reader) => {
                 while(reader.Read())
                 {
                     _versions.Add(new Version(){
